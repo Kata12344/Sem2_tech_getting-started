@@ -16,6 +16,7 @@ FROM app-base AS test
 RUN yarn install
 RUN yarn test
 
+
 # Clear out the node_modules and create the zip
 FROM app-base AS app-zip-creator
 COPY --from=test /app/package.json /app/yarn.lock ./

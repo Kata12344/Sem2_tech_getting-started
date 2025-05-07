@@ -47,7 +47,6 @@ jobs:
       --location ${{ secrets.LOCATION }} \
       --os-type Linux \
       --ports 3000 \
-
       --cpu 1 \
       --memory 1.5
 

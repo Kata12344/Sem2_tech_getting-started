@@ -7,7 +7,7 @@ RUN apk add --no-cache build-base
 
 RUN pip install -r requirements.txt
 
-FROM --platform=$BUILDPLATFORM node:18-alpine AS app-base
+FROM --platform=$BUILDPLATFORM node:24-alpine AS app-base
 WORKDIR /app
 COPY app/package.json app/yarn.lock ./
 COPY app/spec ./spec

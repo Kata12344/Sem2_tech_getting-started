@@ -27,6 +27,13 @@ jobs:
       --resource-group ${{ secrets.RESOURCE_GROUP }} \
       --name getting-started-github \
       --yes || true
+
+   - name: 'Debug Info'
+     run: |
+         echo "Using registry: ${{ secrets.REGISTRY_LOGIN_SERVER }}"
+         echo "Repository name: ${{ secrets.REPOSITORY_NAME }}"
+         echo "Resource group: ${{ secrets.RESOURCE_GROUP }}"
+         echo "GitHub run number: ${{ github.run_number }}"
    - name: 'Deploy to Azure Container Instances with persistent storage'
      run: |
       az container create \
@@ -46,9 +53,4 @@ jobs:
       --azure-file-volume-mount-path /etc/todos \
       --cpu 1 \
       --memory 1.5
-   - name: 'Debug Info'
-     run: |
-        echo "Using registry: ${{ secrets.REGISTRY_LOGIN_SERVER }}"
-        echo "Repository name: ${{ secrets.REPOSITORY_NAME }}"
-        echo "Resource group: ${{ secrets.RESOURCE_GROUP }}"
-        echo "GitHub run number: ${{ github.run_number }}"
+   

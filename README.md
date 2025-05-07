@@ -4,7 +4,7 @@ This tutorial was written with the intent of helping folks get up and running
 with containers and is designed to work with Docker Desktop. While not going too much 
 into depth, it covers the following topics:
 
-- Running your first container
+- Running your first containe
 - Building containers
 - Learning what containers are
 - Running and removing containers

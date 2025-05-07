@@ -13,7 +13,7 @@ into depth, it covers the following topics:
 - Using container networking to support multi-container applications
 - Using Docker Compose to simplify the definition and sharing of applications
 - Using image layer caching to speed up builds and reduce push/pull size
-- Using multi-stage builds to separate build-time and runtime dependencies
+- Using multi-stage builds to separate build-time and runtime dependencie
 
 ## Getting Started
 

@@ -34,21 +34,19 @@ jobs:
          echo "Repository name: ${{ secrets.REPOSITORY_NAME }}"
          echo "Resource group: ${{ secrets.RESOURCE_GROUP }}"
          echo "GitHub run number: ${{ github.run_number }}"
-  #  - name: 'Deploy to Azure Container Instances with persistent storage'
-  #    run: |
-  #     az container create \
-  #     --resource-group ${{ secrets.RESOURCE_GROUP }} \
-  #     --name getting-started-github \
-  #     --image ${{ secrets.REGISTRY_LOGIN_SERVER }}/${{ secrets.REPOSITORY_NAME }}:${{ github.run_number }} \
-  #     --registry-login-server ${{ secrets.REGISTRY_LOGIN_SERVER }} \
-  #     --registry-username ${{ secrets.REGISTRY_USERNAME }} \
-  #     --registry-password ${{ secrets.REGISTRY_PASSWORD }} \
-  #     --dns-name-label ${{ secrets.RESOURCE_GROUP }} \
-  #     --location ${{ secrets.LOCATION }} \
-  #     --os-type Linux \
-  #     --ports 3000 \
-  #     --cpu 1 \
-  #     --memory 1.5
+   - name: "Deploy to Azure Container Instances"
+     uses: "azure/aci-deploy@v1"
+     with:
+          resource-group: ${{ secrets.RESOURCE_GROUP }}
+          dns-name-label: getting-started-github-${{ github.run_number }}
+          image: ${{ secrets.REGISTRY_LOGIN_SERVER }}/${{ secrets.REPOSITORY_NAME }}:${{ github.run_number }}
+          registry-login-server: ${{ secrets.REGISTRY_LOGIN_SERVER }}
+          registry-username: ${{ secrets.REGISTRY_USERNAME }}
+          registry-password: ${{ secrets.REGISTRY_PASSWORD }}
+          name: getting-started-github
+          location: 'westeurope'
+          ports: 3000
+          
 
 # --azure-file-volume-share-name ${{ secrets.SHARE_NAME }} \
 # --azure-file-volume-account-name ${{ secrets.STORAGE_ACCOUNT_NAME }} \

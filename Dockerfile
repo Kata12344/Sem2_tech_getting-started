@@ -12,4 +12,4 @@ RUN NODE_ENV=production yarn install
 
 EXPOSE 3000
 
-CMD ["node", "src/index.js"]
+CMD ["node", "app/src/index.js"]

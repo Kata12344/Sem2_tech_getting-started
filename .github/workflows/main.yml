@@ -20,7 +20,7 @@ jobs:
        login-server: ${{ secrets.REGISTRY_LOGIN_SERVER }}
        username: ${{ secrets.REGISTRY_USERNAME }}
        password: ${{ secrets.REGISTRY_PASSWORD }}
-   - run: docker build . -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/${{ secrets.REPOSITORY_NAME }}:${{ github.run_number }} && docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/${{ secrets.REPOSITORY_NAME }}:${{ github.run_number }}
+   - run: docker build -f Dockerfile.node -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/${{ secrets.REPOSITORY_NAME }}:${{ github.run_number }} && docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/${{ secrets.REPOSITORY_NAME }}:${{ github.run_number }}
    - name: 'Delete existing container (if exists)'
      run: |
       az container delete \
